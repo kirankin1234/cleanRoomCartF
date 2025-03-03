@@ -1,4 +1,4 @@
-import { BASE_URL } from "../../API/BaseURL";
+import { BASE_URL } from './BaseURL';
 
 
 export const loginApi = async(values) => {
