@@ -98,7 +98,7 @@ const AdminSignup = () => {
               Sign up
             </Button>
           </Form.Item>
-          <Button type="link" onClick={() => navigate('/login')} block>
+          <Button type="link" onClick={() => navigate('/admin/login')} block>
             Already have an account? Login
           </Button>
         </Form>
