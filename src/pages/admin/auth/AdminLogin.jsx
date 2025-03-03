@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import { Form, Input, Button, Card, message } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
-import { BASE_URL } from "../../../API/BaseURL"
-
+import { BASE_URL } from "../../../API/BaseURL";
 
 const AdminLogin = () => {
   const navigate = useNavigate();
@@ -19,20 +18,20 @@ const AdminLogin = () => {
         },
         body: JSON.stringify(values),
       });
-      
+
       const data = await response.json();
-      
+
       if (response.ok) {
         localStorage.setItem('adminToken', data.token);
         localStorage.setItem('adminName', data.name);
         message.success('Login successful!');
         navigate('/admin/dashboard');
       } else {
-        message.error(data.message || 'Login failed!');
+        message.error(data.message || 'Invalid credentials, please try again!');
       }
     } catch (error) {
       console.error('Login error:', error);
-      message.error('Login failed! Please try again.');
+      message.error('Network error! Please check your connection.');
     } finally {
       setLoading(false);
     }
@@ -44,9 +43,17 @@ const AdminLogin = () => {
       justifyContent: 'center', 
       alignItems: 'center', 
       minHeight: '100vh',
-      background: '#f0f2f5'
+      background: '#f0f2f5',
+      padding: '20px'
     }}>
-      <Card title="Admin Login" style={{ width: 400, boxShadow: '0 4px 8px rgba(0,0,0,0.1)' }}>
+      <Card 
+        title="Admin Login" 
+        style={{ 
+          width: 400, 
+          boxShadow: '0 4px 12px rgba(0,0,0,0.15)', 
+          borderRadius: '10px' 
+        }}
+      >
         <Form
           name="login"
           onFinish={onFinish}
@@ -59,20 +66,33 @@ const AdminLogin = () => {
               { type: 'email', message: 'Please enter a valid email!' }
             ]}
           >
-            <Input prefix={<UserOutlined />} placeholder="Email" size="large" />
+            <Input 
+              prefix={<UserOutlined />} 
+              placeholder="Email" 
+              size="large" 
+              autoFocus
+            />
           </Form.Item>
           <Form.Item
             name="password"
             rules={[{ required: true, message: 'Please input your password!' }]}
           >
-            <Input.Password prefix={<LockOutlined />} placeholder="Password" size="large" />
+            <Input.Password 
+              prefix={<LockOutlined />} 
+              placeholder="Password" 
+              size="large" 
+            />
           </Form.Item>
           <Form.Item>
-            <Button type="primary" htmlType="submit" block size="large" loading={loading}>
+            <Button type="primary" htmlType="submit" block size="large"
+            style={{ width: '88%' }}
+            loading={loading}>
               Log in
             </Button>
           </Form.Item>
-          <Button type="link" onClick={() => navigate('/admin/signup')} block>
+          <Button type="link"
+             style={{ width: '88%' }}
+          onClick={() => navigate('/admin/signup')} block>
             Don't have an account? Create account
           </Button>
         </Form>
@@ -81,4 +101,4 @@ const AdminLogin = () => {
   );
 };
 
-export default AdminLogin; 
+export default AdminLogin;
