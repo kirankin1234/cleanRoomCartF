@@ -1,0 +1,49 @@
+.modal .ant-modal-content {
+    background-color: #f0f2f5;
+    /* Light gray background */
+    border-radius: 10px;
+    /* Rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    /* Soft shadow */
+    /* font-weight: px; */
+    ;
+}
+
+.ant-modal-confirm-content {
+    font-size: 14px;
+    /* background-color: #444b52; */
+    /* size: 50px; */
+}
+
+.modal .ant-modal-title {
+    color: #1c1d1e;
+    /* Blue title */
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.modal .ant-modal-footer {
+    display: flex;
+    justify-content: center;
+    /* Center buttons */
+    padding-top: 5px;
+}
+
+.modal .ant-btn-primary {
+    background-color: #33905d;
+    /* Green login button */
+    border-color: #dee2dc;
+    margin-right: 20px;
+}
+
+.modal .ant-btn-primary:hover {
+    background-color: #072c19;
+    /* Darker green on hover */
+}
+
+.modal .ant-btn-default {
+    color: red;
+    /* Red cancel button */
+    margin-bottom: 9px;
+    margin-right: 20px;
+}
