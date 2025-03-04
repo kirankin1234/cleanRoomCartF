@@ -20,7 +20,7 @@ const response = await axios.get(`${BASE_URL}/api/cart/get/${userId}`);
 setCartItems(response.data);
 } catch (error) {
 console.error("Error fetching cart items:", error);
-alert("Failed to fetch cart items. Please try again.");
+// alert("Failed to fetch cart items. Please try again.");
 } finally {
 setLoading(false);
 }
