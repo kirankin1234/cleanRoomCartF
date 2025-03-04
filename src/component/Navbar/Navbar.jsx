@@ -97,17 +97,8 @@ const Navbar = () => {
           <h1 className="navbar-logo"></h1>
           {/* <img style={{width:' 120px'}} src={logo} alt='logo'/> */}
           <Link to="/">
-  <img 
-    style={{ 
-      width: "120px", 
-      cursor: "pointer", 
-      paddingTop: "18px", 
-      marginLeft: "20px" /* Small left margin */
-    }} 
-    src={logo} 
-    alt="logo" 
-  />
-</Link>
+            <img style={{ width: "120px", cursor: "pointer", paddingTop:'18px', margin:'0px', marginRight: '670px' }} src={logo} alt="logo" />
+          </Link>
 
           {/* <div className="navbar-search">
             <Input
@@ -116,7 +107,7 @@ const Navbar = () => {
               suffix={<SearchOutlined />}
             />
             <Button className="search-button" icon={<SearchOutlined />}></Button>
-          </div>
+          </div> */}
           <div className="navbar-questions">
             
               <PhoneOutlined /> <span>Questions? Call 123-456-7890 </span>
@@ -124,7 +115,7 @@ const Navbar = () => {
             <a href="mailto:info@cleanroomworld.com" className="email-link">
               <MailOutlined /> info@cleanroomcart.com
             </a>
-          </div> */}
+          </div>
         </Header>
 
 

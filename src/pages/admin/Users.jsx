@@ -19,7 +19,7 @@ const Users = () => {
 
   const columns = [
     {
-      title: 'S.No.',
+      title: 'No.',
       key: 'serialNo',
       render: (text, record, index) => index + 1,
     },
@@ -32,16 +32,24 @@ const Users = () => {
       title: 'Email',
       dataIndex: 'email',
       key: 'email',
-    }
+    },
+    {
+      title: 'Contact Number',
+      dataIndex: 'phoneNumber',
+      key: 'phoneNumber',
+    },
   ];
 
   return (
-    <Card title="User Information">
-      {/* ✅ Display Total Users Count */}
-      <Statistic title="Total Users" value={users.length} style={{ marginBottom: 16 }} />
-      
-      <Table columns={columns} dataSource={users} rowKey="_id" />
-    </Card>
+    <> 
+      <h2>User Information</h2>
+      <Card >
+        {/* ✅ Display Total Users Count */}
+        <Statistic title="Total Users" value={users.length} style={{ marginBottom: 16 }} />
+        
+        <Table columns={columns} dataSource={users} rowKey="_id" />
+      </Card>
+    </>
   );
 };
 

@@ -193,16 +193,15 @@
 
 .ant-input,
 .ant-input-textarea {
-    border: 1px solid #9F5255;
+    border: 1px solid #2b2424;
     /* Soft border color */
     color: #7C444F;
 }
 
 .ant-input:focus,
 .ant-input:hover,
-.ant-input-textarea:focus,
-.ant-input-textarea:hover {
-    border-color: #E16A54;
+.ant-input-textarea:focus {
+    border-color: #1e1716;
     /* Highlight color on focus */
     box-shadow: 0 0 5px rgba(225, 106, 84, 0.5);
 }

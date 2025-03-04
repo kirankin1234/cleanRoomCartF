@@ -54,16 +54,21 @@ const CartPage = () => {
                 {
                   title: "Action",
                   render: (_, record) => (
-                    <Button type="link" danger onClick={() => handleRemoveItem(record.key)}>
+                    <Button
+                      type="link"
+                      danger
+                      onClick={() => handleRemoveItem(record)}
+                      style={{ border: 'none', color: 'red' }}
+                    >
                       Remove
                     </Button>
                   ),
                 },
               ]}
             />
-            <Row justify="end" style={{ marginTop: 20 }}>
+            <Row justify="end" style={{ marginTop: 20, justifyContent:'left' }}>
               <Col>
-                <Title level={3}>Total: ₹{calculateTotal()}</Title>
+                <Title level={3}> Total: ₹{calculateTotal()}</Title>
                 <Button type="primary" size="large">Proceed to Checkout</Button>
               </Col>
             </Row>

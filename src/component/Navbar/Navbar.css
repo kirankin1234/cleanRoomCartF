@@ -1,45 +1,43 @@
-Navbar.css
-
-.navbar {
+Navbar.css .navbar {
     /* font-family: Arial, sans-serif; */
     font-family: "Quicksand", serif;
     /* font-family: Arial, Helvetica, sans-serif; */
+}
 
-  }
-  
-  .navbar-top {
+.navbar-top {
     display: flex;
     justify-content: end;
     align-items: center;
     background-color: #40476D;
     color: white;
-        /* height: 20px; */
+    /* height: 20px; */
     padding: 11px 0px 0px 0px;
-        /* font-size: 41px; */
+    /* font-size: 41px; */
     height: 40px;
-  }
-  
-  .navbar-certification {
+}
+
+.navbar-certification {
     font-weight: bold;
     margin-left: 90px;
     margin-right: 318px;
     /* font-size: 40px; */
-
     color: white;
-  }
-  
-  .navbar-contact span {
+}
+
+.navbar-contact span {
     cursor: pointer;
     /* padding-bottom: 10px; */
     /* padding: 10px; */
-    margin-right: 15px ;
+    margin-right: 15px;
     margin-bottom: 10px;
     /* font-weight: bold; */
-    text-decoration:none;
+    text-decoration: none;
     color: white;
     font-size: 16px;
-  }
-  /* .navbar-contact span:hover {
+}
+
+
+/* .navbar-contact span:hover {
     text-decoration: underline;
     width: 20%;
     min-width: 280px;
@@ -49,36 +47,37 @@ Navbar.css
     padding: 10px 20px;
 }
   } */
-  
-  .navbar-main {
+
+.navbar-main {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 10px 20px;
     border-bottom: 1px solid #ddd;
-  }
-  
-  /* .navbar-logo {
+}
+
+
+/* .navbar-logo {
     font-size: 24px;
     font-weight: bold;
     color: #007eb5;
   } */
-  
-  .navbar-search {
+
+.navbar-search {
     display: flex;
     align-items: center;
     /* width: auto; */
-  }
-  
-  .search-input {
+}
+
+.search-input {
     padding: 5px;
     border: 1px solid #ddd;
     border-radius: 5px;
     width: 400px;
     height: 30px;
-  }
-  
-  .search-button {
+}
+
+.search-button {
     background-color: #40476D;
     color: white;
     border: none;
@@ -88,37 +87,35 @@ Navbar.css
     border-radius: 20px;
     width: auto;
     height: 40px;
-  }
-  
-  .navbar-questions {
+}
+
+.navbar-questions {
     text-align: right;
     font-size: 14px;
     justify-content: space-between;
-  }
-  
-  .email-link {
+}
+
+.email-link {
     color: #40476D;
     text-decoration: none;
     margin-right: 40px;
     margin-left: 30px;
-  }
-  
-  .navbar-links {
+}
+
+.navbar-links {
     display: flex;
     justify-content: center;
     gap: 15px;
     padding: 10px 20px;
     background-color: #40476D;
     font-size: 18px;
-    
-  }
-  
-  .navbar-links a {
+}
+
+.navbar-links a {
     text-decoration: none;
     color: black;
-  }
-  
-  .navbar-links span {
+}
+
+.navbar-links span {
     color: #ddd;
-  }
-  
+}

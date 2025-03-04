@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Form, Input, Button, Card, message } from 'antd';
-import { UserOutlined, LockOutlined, MailOutlined } from '@ant-design/icons';
+import { UserOutlined, LockOutlined, MailOutlined, KeyOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
-import {BASE_URL} from '../../../API/BaseURL';
+import { BASE_URL } from '../../../API/BaseURL';
 
 const AdminSignup = () => {
   const navigate = useNavigate();
@@ -45,21 +45,30 @@ const AdminSignup = () => {
       justifyContent: 'center', 
       alignItems: 'center', 
       minHeight: '100vh',
-      background: '#f0f2f5'
+      background: '#f0f2f5',
+      marginTop: '61px',
     }}>
-      <Card title="Admin Signup" style={{ width: 400, boxShadow: '0 4px 8px rgba(0,0,0,0.1)' }}>
+      <Card title={
+          <>
+            <KeyOutlined style={{ marginRight: 9, marginTop:9, color: 'black', fontSize:'25px' }} /> 
+            <span style={{ fontSize:'20px'}}>Admin Signup</span>
+          </>
+        } 
+      style={{ width: 450, boxShadow: '0 4px 8px rgba(0,0,0,0.1)', paddingTop:'20px', }}>
         <Form
           name="signup"
           onFinish={onFinish}
           layout="vertical"
         >
           <Form.Item
+          style={{height:'70px',  padding:'15px 15px 0px 15px'}}
             name="name"
             rules={[{ required: true, message: 'Please input your name!' }]}
           >
             <Input prefix={<UserOutlined />} placeholder="Name" size="large" />
           </Form.Item>
           <Form.Item
+          style={{height:'70px', padding:'15px 15px 0px 15px'}}
             name="email"
             rules={[
               { required: true, message: 'Please input your email!' },
@@ -69,12 +78,14 @@ const AdminSignup = () => {
             <Input prefix={<MailOutlined />} placeholder="Email" size="large" />
           </Form.Item>
           <Form.Item
+          style={{height:'70px',padding:'15px 15px 0px 15px'}}
             name="password"
             rules={[{ required: true, message: 'Please input your password!' }]}
           >
             <Input.Password prefix={<LockOutlined />} placeholder="Password" size="large" />
           </Form.Item>
           <Form.Item
+          style={{height:'70px',padding:'15px 15px 0px 15px'}}
             name="confirmPassword"
             dependencies={['password']}
             rules={[
@@ -91,12 +102,17 @@ const AdminSignup = () => {
           >
             <Input.Password prefix={<LockOutlined />} placeholder="Confirm Password" size="large" />
           </Form.Item>
-          <Form.Item>
-            <Button type="primary" htmlType="submit" block size="large" loading={loading}>
+          <Form.Item
+           style={{ height:'70px'}}>
+            <Button 
+            style={{marginLeft:'15%', width:'70%'}}
+             type="primary" htmlType="submit" block size="large" loading={loading}>
               Sign up
             </Button>
           </Form.Item>
-          <Button type="link" onClick={() => navigate('/admin/login')} block>
+          <Button
+          style={{marginLeft:'15%', width:'70%', marginBottom:'10px', border:'none', height:'10px'}}
+           type="link" onClick={() => navigate('/admin/login')} block>
             Already have an account? Login
           </Button>
         </Form>

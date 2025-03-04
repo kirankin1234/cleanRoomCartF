@@ -39,7 +39,7 @@ const SubcategoryPage = () => {
   }, [id]);
 
   const trimDescription = (desc) => {
-    return desc ? desc.split(" ").slice(0, 10).join(" ") + "..." : "No description available";
+    return desc ? desc.split(" ").slice(0, 2).join(" ") + "..." : "No description available";
   };
 
   if (loading)
@@ -60,7 +60,7 @@ const SubcategoryPage = () => {
 
       {/* Product List */}
       {products.length > 0 ? (
-        <Row gutter={[16, 16]} justify="center">
+        <Row gutter={[16, 16]} >
           {products.map((product) => (
             <Col key={product._id} xs={24} sm={12} md={8} lg={6} style={{ paddingTop: "20px" }}>
               <Card

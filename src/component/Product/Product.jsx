@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 import { Row, Col, Typography, Button, Radio, InputNumber, Image, Spin, Tooltip, Modal, message } from "antd";
 import axios from "axios";
 import { useCart } from "../../context/CartContext";
@@ -12,6 +12,7 @@ const { Title, Text } = Typography;
 const Product = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const location = useLocation(); // Get current page URL
   const [product, setProduct] = useState(null);
   const [subProducts, setSubProducts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -66,15 +67,22 @@ const Product = () => {
     const user = JSON.parse(localStorage.getItem("user"));
 
     if (!user) {
+      // Store the current page before redirecting to login
+      localStorage.setItem("redirectAfterLogin", location.pathname);
+    
       Modal.confirm({
         title: "Login Required",
-        content: "Please log in to add items to the cart.",
+        content: "Please log in to continue.",
         okText: "Login",
         cancelText: "Cancel",
-        onOk: () => navigate("/login"),
+        onOk: () => {
+          navigate("/login");
+        },
       });
+    
       return;
     }
+    
 
     const cartItem = {
       key: `${product._id}-${selectedSize || ""}-${selectedColor || ""}`,
@@ -120,7 +128,6 @@ const Product = () => {
       message.success("Item added to cart!");
     } catch (error) {
       console.error("Error adding to cart:", error);
-      // message.error("Failed to add item to cart. Please try again.");
     }
   };
 

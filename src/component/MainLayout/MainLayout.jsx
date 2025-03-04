@@ -28,7 +28,7 @@ const MainLayout = () => {
   };
 
   const handleLogin = () => {
-    navigate("/admin/login");
+    navigate("/login");
   };
 
   const menuItems = [

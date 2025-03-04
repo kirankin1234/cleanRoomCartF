@@ -54,9 +54,12 @@ const Inquiry = () => {
   ];
 
   return (
-    <Card title="User Inquiries">
-      <Table columns={columns} dataSource={inquiries} rowKey="_id" />
-    </Card>
+    <>
+      <h2>User Inquiries</h2>
+      <Card >
+        <Table columns={columns} dataSource={inquiries} rowKey="_id" />
+      </Card>
+    </>
   );
 };
 

@@ -474,7 +474,7 @@ const AddProduct = () => {
 </Form.Item>
 
 
-      <Button style={{ backgroundColor: '#E16A54', borderColor: '#E16A54', color: "#fff", width: "100%" }} type="primary" htmlType="submit">
+      <Button style={{ backgroundColor: '#E16A54', marginTop:'-60px',borderColor: '#E16A54', color: "#fff",  width: "70%",marginLeft: '15%' }} type="primary" htmlType="submit">
         Add Product
       </Button>
     </Form>
