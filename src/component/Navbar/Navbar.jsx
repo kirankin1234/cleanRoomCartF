@@ -97,7 +97,7 @@ const Navbar = () => {
           <h1 className="navbar-logo"></h1>
           {/* <img style={{width:' 120px'}} src={logo} alt='logo'/> */}
           <Link to="/">
-            <img style={{ width: "120px", cursor: "pointer", paddingTop:'18px' }} src={logo} alt="logo" />
+            <img style={{ width: "120px", cursor: "pointer", paddingTop:'18px', marginLeft:'80px' }} src={logo} alt="logo" />
           </Link>
           {/* <div className="navbar-search">
             <Input
