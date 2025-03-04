@@ -11,7 +11,7 @@ const AdminLogin = () => {
   const onFinish = async (values) => {
     setLoading(true);
     try {
-      const response = await fetch(`${BASE_URL}/api/admin/login`, {
+      const response = await fetch(`${Base_URL}/api/admin/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
