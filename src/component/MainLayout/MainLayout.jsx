@@ -24,11 +24,11 @@ const MainLayout = () => {
 
   const handleLogout = () => {
     localStorage.removeItem("adminToken");
-    navigate("/login");
+    navigate("/admin/login");
   };
 
   const handleLogin = () => {
-    navigate("/login");
+    navigate("/admin/login");
   };
 
   const menuItems = [
