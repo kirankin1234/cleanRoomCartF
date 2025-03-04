@@ -1,25 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import { Table, Typography, Button, InputNumber, Row, Col, Empty } from "antd";
 import { Link } from "react-router-dom";
-import { useCart } from "../../context/CartContext.jsx"; 
+import { useCart } from "../../context/CartContext";
 
 const { Title, Text } = Typography;
 
 const CartPage = () => {
-  const { cartItems, setCartItems } = useCart(); 
+  const { cartItems, handleQuantityChange, handleRemoveItem, loading } = useCart();
 
-  const handleQuantityChange = (value, record) => {
-    setCartItems((prevItems) =>
-      prevItems.map((item) =>
-        item.key === record.key ? { ...item, quantity: value } : item
-      )
-    );
-  };
-
-  const handleRemoveItem = (key) => {
-    setCartItems((prevItems) => prevItems.filter((item) => item.key !== key));
-    alert("Are you sure you want to remove this item from the cart?");
-  };
+  if (loading) return <div>Loading...</div>;
 
   const calculateTotal = () => {
     return cartItems.reduce((total, item) => total + item.price * item.quantity, 0);

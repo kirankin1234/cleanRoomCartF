@@ -1,55 +1,65 @@
 import React, { createContext, useState, useContext, useEffect } from "react";
+import axios from "axios";
+import { BASE_URL } from '../API/BaseURL';
 
 const CartContext = createContext();
 
 export const useCart = () => useContext(CartContext);
 
 export const CartProvider = ({ children }) => {
-  // Load cart from localStorage
-  const [cartItems, setCartItems] = useState(() => {
-    const savedCart = localStorage.getItem("cart");
-    return savedCart ? JSON.parse(savedCart) : [];
-  });
+  const [cartItems, setCartItems] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const user = JSON.parse(localStorage.getItem("user"));
+  const userId = user?._id;
 
-  // Save cart to localStorage whenever cartItems change
-  useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(cartItems));
-  }, [cartItems]);
+  const fetchCartItems = async () => {
+    try {
+      if (!user) return;
 
-  const addToCart = (item) => {
-    setCartItems((prevItems) => {
-      const existingItemIndex = prevItems.findIndex((i) => i.name === item.name);
-      if (existingItemIndex !== -1) {
-        // Update the quantity of the existing item
-        const updatedItems = [...prevItems];
-        updatedItems[existingItemIndex].quantity += item.quantity;
-        return updatedItems;
-      }
-
-      const existingItem = prevItems.find((i) => i.key === item.key);
-
-      if (existingItem) {
-        alert("This item is already in your cart!"); // Show alert if item exists
-        return prevItems; // Do not add the duplicate item
-      }
-  
-      // Assign a unique key when adding a new item
-      return [...prevItems, { ...item, key: Date.now().toString() }];
-
-      // fetch("http://localhost:5001/api/interested-users/add", {
-      //   method: "POST",
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //   },
-      //   body: JSON.stringify({ user, product: item }),
-      // }).catch((error) => console.error("Error saving interested user:", error));
-      // return [...prevItems, newItem];
-    });
+      const response = await axios.get(`${BASE_URL}/api/cart/get/${userId}`);
+      setCartItems(response.data);
+    } catch (error) {
+      console.error("Error fetching cart items:", error);
+      alert("Failed to fetch cart items. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
+
+  useEffect(() => {
+    fetchCartItems();
+  }, [user, userId]);
+
+  const addToCart = async (item) => {
   
+      const response = await axios.post(`${BASE_URL}/api/cart/add`, item);
+      fetchCartItems(); // Update cart items after adding a new item
+    } 
+
+  const handleQuantityChange = async (value, record) => {
+    try {
+      const response = await axios.put(`${BASE_URL}/api/cart/update/${userId}/${record.productId}/${record.size}/${record.color}`, {
+        quantity: value,
+      });
+      fetchCartItems(); // Update cart items after changing quantity
+    } catch (error) {
+      console.error("Error updating quantity:", error);
+      alert("Failed to update quantity. Please try again.");
+    }
+  };
+
+  const handleRemoveItem = async (key) => {
+    try {
+      const response = await axios.delete(`${BASE_URL}/api/cart/remove/${userId}/${key.split('-')[1]}/${key.split('-')[2]}/${key.split('-')[3]}`);
+      fetchCartItems(); // Update cart items after removing an item
+    } catch (error) {
+      console.error("Error removing item:", error);
+      alert("Failed to remove item. Please try again.");
+    }
+  };
 
   return (
-    <CartContext.Provider value={{ cartItems, addToCart, setCartItems }}>
+    <CartContext.Provider value={{ cartItems, addToCart, handleQuantityChange, handleRemoveItem, loading }}>
       {children}
     </CartContext.Provider>
   );

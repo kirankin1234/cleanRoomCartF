@@ -2,9 +2,6 @@ import React, { useState } from 'react';
 import { Form, Input, Button, Card, message } from 'antd';
 import { UserOutlined, LockOutlined, MailOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
-import { BASE_URL } from "../../../API/BaseURL"
-
-
 
 const AdminSignup = () => {
   const navigate = useNavigate();
@@ -13,7 +10,7 @@ const AdminSignup = () => {
   const onFinish = async (values) => {
     setLoading(true);
     try {
-      const response = await fetch(`${BASE_URL}/api/admin/register`, {  // Note: using register instead of signup
+      const response = await fetch('http://localhost:5001/api/admin/register', {  // Note: using register instead of signup
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

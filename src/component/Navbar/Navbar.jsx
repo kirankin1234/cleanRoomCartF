@@ -99,7 +99,7 @@ const Navbar = () => {
           <Link to="/">
             <img style={{ width: "120px", cursor: "pointer", paddingTop:'18px' }} src={logo} alt="logo" />
           </Link>
-          <div className="navbar-search">
+          {/* <div className="navbar-search">
             <Input
               placeholder="Search by Keyword, Item or Model"
               className="search-input"
@@ -114,7 +114,7 @@ const Navbar = () => {
             <a href="mailto:info@cleanroomworld.com" className="email-link">
               <MailOutlined /> info@cleanroomcart.com
             </a>
-          </div>
+          </div> */}
         </Header>
 
 
